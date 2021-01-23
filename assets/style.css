@@ -2,6 +2,6 @@ h1{
     color: red;
 }
 
-#quote {
-    border: 1px black;
+.container {
+    border: 1px solid black;
 }
