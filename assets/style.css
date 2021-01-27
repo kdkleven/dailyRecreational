@@ -1,26 +1,33 @@
 .hero-image {
     background-image: url("https://www.outdoors.com/wp-content/uploads/2018/03/outdoors-bg-1.jpg"); 
-    background-color: gray; 
+    background-color: white; 
     height: 1000px; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
   }
-
+/* need to update font to be more readable */
 body {
     font-family: 'Bodoni Moda', serif;
     
 }
 .form-label{
     color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 h1{
     color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
     text-align: center;
 }
 
 .jumbotron {
     color: white;
+    font-size: 50px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
     box-shadow:  -1em 0 .4em whitesmoke;
 }
 
