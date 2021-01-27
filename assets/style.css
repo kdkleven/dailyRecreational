@@ -1,6 +1,6 @@
 .hero-image {
     background-image: url("https://www.outdoors.com/wp-content/uploads/2018/03/outdoors-bg-1.jpg"); 
-    background-color: #cccccc; 
+    background-color: gray; 
     height: 1000px; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -21,10 +21,11 @@ h1{
 
 .jumbotron {
     color: white;
+    box-shadow:  -1em 0 .4em whitesmoke;
 }
 
 .cardContainer {
     display: flex;
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
