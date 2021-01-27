@@ -7,10 +7,10 @@ h1{
     text-align: center;
 }
 
-.container {
+/* .container {
     border: 1px solid black;
     
-}
+} */
 
 .cardContainer {
     display: flex;
