@@ -1,5 +1,15 @@
+.hero-image {
+    background-image: url("https://www.policymed.com/wp-content/uploads/2013/02/6a00e5520572bb8834017d41062de7970c-320wi.png"); 
+    background-color: #cccccc; 
+    height: 1000px; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+  }
+
 body {
     font-family: 'Bodoni Moda', serif;
+    
 }
 
 h1{
@@ -7,10 +17,9 @@ h1{
     text-align: center;
 }
 
-/* .container {
-    border: 1px solid black;
-    
-} */
+.jumbotron {
+    color: #2a9df4;
+}
 
 .cardContainer {
     display: flex;
