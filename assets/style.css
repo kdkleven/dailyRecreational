@@ -37,11 +37,12 @@ h1{
 }
 
 .jumbotron {
+    padding-left: 25px;
     color: white;
     font-size: 50px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-    box-shadow:  -1em 0 .4em whitesmoke;
+    box-shadow:  10px 5px 5px whitesmoke;
 }
 
 .cardContainer {
