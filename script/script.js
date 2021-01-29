@@ -97,9 +97,11 @@ $.ajax ({
     method: "GET"
 }).then(function(response){
     var data = JSON.parse(response);
-    console.log(data);
-    console.log(data[randInt].text);
-    console.log(data[randInt].author);
+    // console.log(data);
+    // console.log(data[randInt].text);
+    // console.log(data[randInt].author);
+    $("#quote").text(data[randInt].text + "  ");
+    $("#quote").append("~  " + (data[randInt].author) );
 });
 
 //code to push to page needed
@@ -118,4 +120,6 @@ $.ajax ({
     var data = JSON.parse(response);
     console.log(data);
     console.log(data.state);
+
+
 });
