@@ -28,7 +28,7 @@
     <div class="container">
       <!-- search form -->
       <div class="row">
-        <div class="col-3-sm">
+        <div class="col-xs-2">
           <label id="input" for="formGroupExampleInput" class="form-label">Zipcode</label>
           <input
             type="text"
@@ -36,17 +36,20 @@
             id="formGroupExampleInput"
             placeholder="Enter Zipcode"
           >
-          <select class="form-select" aria-label="Default select example">
-            <!--Activity dropdown -->
-            <option selected>Select Activity</option>
-            <option value="1">Camping</option>
-            <option value="2">Biking</option>
-            <option value="3">Hiking</option>
-          </select>
+          <div class="col-xs-2">
+           <!--Activity dropdown -->
+            <select class="form-select" aria-label="Default select example">  
+              <option selected>Select Activity</option>
+              <option value="1">Camping</option>
+              <option value="2">Biking</option>
+              <option value="3">Hiking</option>
+            </select>
+          </div>
           <button id="submit" type="button" class="btn btn-success">Submit</button>
           <button type="button" class="btn btn-secondary">Reset</button>
         </div>
       </div>
+      
     </div>
     <br />
 
