@@ -99,16 +99,17 @@ $.ajax ({
     var data = JSON.parse(response);
     console.log(data);
     console.log(data[randInt].text);
+    console.log(data[randInt].author);
 });
 
 //code to push to page needed
 
 //PLACES WITHIN A 500 MILE RADIUS
-var zipRadius = corsVar + "https://www.zipcodeapi.com/rest/FmZssgT290OJYfl04zz7w5aoLTZqmkEd3FQv6KGDnVDEIBPrC3EVsSVMAJZiYLwM/radius.json/" + zipcode + "/500/mile"
+// var zipRadius = corsVar + "https://www.zipcodeapi.com/rest/FmZssgT290OJYfl04zz7w5aoLTZqmkEd3FQv6KGDnVDEIBPrC3EVsSVMAJZiYLwM/radius.json/" + zipcode + "/500/mile"
 
 
 // ZIP CODE TO STATE
-var statequeryURL = corsVar + "https://www.zipcodeapi.com/rest/FmZssgT290OJYfl04zz7w5aoLTZqmkEd3FQv6KGDnVDEIBPrC3EVsSVMAJZiYLwM/info.json/" + zipcode + "/degrees"
+var statequeryURL = corsVar + "https://www.zipcodeapi.com/rest/" + zipcodeAPIKey +"/info.json/" + zipcode + "/degrees";
 
 $.ajax ({
     url: statequeryURL,
