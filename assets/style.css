@@ -11,6 +11,13 @@ body {
     font-family: 'Roboto', sans-serif;
     
 }
+#quote{
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
 .form-label{
     color: white;
     -webkit-text-stroke-width: 1px;
