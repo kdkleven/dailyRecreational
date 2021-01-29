@@ -5,7 +5,7 @@ var zipcode;
 var keyword;
 
 var npsAPIkey = "3eMx7JuhaDduCgDGcbpUQDSwo9EBymREAUXmdQch";
-var npsQueryURL = "https://developer.nps.gov/api/v1/activities?q=" + keyword + "&api_key=" + npsAPIkey;
+
 
 var weatherapiKey = "73d3cee72322c512646546f162d5afe5";
 var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&units=imperial&appid=" + weatherapiKey;
@@ -18,51 +18,65 @@ var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + z
 var zipcodeAPIKey = "ZjHz81gGy2vO2MQx3iYvDmmBBljAfRQzjbTg85zxDDPqSDZGjFiygyYRPNenp2pR";
 var zipCodequeryURL = corsVar + "https://www.zipcodeapi.com/rest/" + zipcodeAPIKey + "/distance.json/" + zipcode + "/" + desZipcode + "/mile";
 
-$('#submit').on("click", function(e) {
+$('#submit').on("click", function (e) {
     e.preventDefault();
-    alert("this worked");
-    zipcode = document.querySelector('#input').value();
+    // alert("this worked");
+    zipcode = $('#formGroupExampleInput').val().trim();
     console.log(zipcode);
     activity = $('option').text();
+    //console.log(keyword);
 
     weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=" + zipcode + "&units=imperial&appid=" + weatherapiKey;
 
-    $.ajax({
-        url: weatherqueryURL,
-        method: "GET"
-    }).then(function (weather) {
-        console.log(weatherqueryURL);
-        console.log(weather.main.temp);
-        console.log(weather.main.temp_min);
-        console.log(weather.main.temp_max);
-        console.log(weather.main.humidity);
-        console.log(weather.name);
-        console.log(moment((weather.dt), "X").format("MM/DD/YY"));
-        compareZip();
-        getActivity();
+    // $.ajax({
+    //     url: weatherqueryURL,
+    //     method: "GET"
+    // }).then(function (weather) {
+    //     //console.log(weatherqueryURL);
+    //     console.log(weather.main.temp);
+    //     console.log(weather.main.temp_min);
+    //     console.log(weather.main.temp_max);
+    //     console.log(weather.main.humidity);
+    //     console.log(weather.name);
+    //     console.log(moment((weather.dt), "X").format("MM/DD/YY"));
+    //     compareZip();
 
-    });
 
+    // });
+    getActivity(zipcode);
 
 });
 
-function getActivity() {
-    activityqueryURL = corsVar + "http://api.amp.active.com/v2/search/?near=" + zipcode + "&current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=" + activityAPIKey;
+function getActivity(zipcode) {
+    var npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + zipcode + "&api_key=" + npsAPIkey;
 
     $.ajax({
-        url: activityqueryURL,
+        url: npsQueryURL,
         method: "GET",
-        // headers: {'Origin': "http://api.amp.active.com/v2/search/?zip=" + zipcode + "&current_page=1&per_page=10&sort=distance&exclude_children=true&api_key=" + activityAPIKey}
+
     }).then(function (activities) {
-        console.log(JSON.parse(activities));
 
 
-        for (var i = 0; i < 5; i++) {
-            console.log(JSON.parse(JSON.stringify(activities[i].assetName)));
+        var result = activities.data;
+        var postalCodes = [];
+        var pCode = "";
+
+        console.log(result);
+
+        for (var i = 0; i < result.length; i++) {
+            if (result[i].addresses[0]){
+                pCode = result[i].addresses[0].postalCode;
+                postalCodes.push(pCode);
+            }
+            
+
         }
-
+        
+        let unique = [...new Set(postalCodes)];
+        console.log(unique);
     });
 }
+
 
 function compareZip() {
 
