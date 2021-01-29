@@ -92,6 +92,7 @@ var queryURL = "https://type.fit/api/quotes";
 var randInt = Math.floor(Math.random() * 1683);
 console.log(randInt);
 
+function getQuote () {
 $.ajax ({
     url: queryURL,
     method: "GET"
@@ -103,6 +104,10 @@ $.ajax ({
     $("#quote").text(data[randInt].text + "  ");
     $("#quote").append("~  " + (data[randInt].author) );
 });
+
+}
+
+getQuote ();
 
 //code to push to page needed
 
