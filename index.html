@@ -28,15 +28,15 @@
     <div class="container">
       <!-- search form -->
       <div class="row">
-        <div class="col-xs-2">
+        <div class="col-4">
           <label id="input" for="formGroupExampleInput" class="form-label">Zipcode</label>
           <input
             type="text"
             class="form-control"
             id="formGroupExampleInput"
             placeholder="Enter Zipcode"
-          >
-          <div class="col-xs-2">
+          ><div>
+          <div class="row">
            <!--Activity dropdown -->
             <select class="form-select" aria-label="Default select example">  
               <option selected>Select Activity</option>
@@ -45,10 +45,29 @@
               <option value="3">Hiking</option>
             </select>
           </div>
-          <button id="submit" type="button" class="btn btn-success">Submit</button>
-          <button type="button" class="btn btn-secondary">Reset</button>
+            <div class="row">
+              <div class="col-6">
+                <button id="submit" type="button" class="btn btn-success">Submit</button>
+                <button type="button" class="btn btn-secondary">Reset</button>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- weather jumbotron  -->
+        <div class="col-8">
+          <div class="jumbotron">
+            <h2 id="todayWeather">dfadfdf</h2>
+            <h3 id="currentTemp">adfsdfsd</h3>
+            <h3 id="high" class="">adfsdf</h3>
+            <h3 id="low" class="">asdfsdf</h3>
+            <h3 id="windspeed" class="">dasf</h3>
+            <h3 id="humidity" class="">adfad</h3>
+          </div>
+        </div>
+          
       </div>
+
+      
       
     </div>
     <br />
@@ -60,17 +79,8 @@
       </div>
     </div>
 
-    <!-- weather jumbotron  -->
-    <div class="container">
-      <div class="jumbotron">
-        <h2 id="todayWeather"></h2>
-        <h3 id="currentTemp"></h3>
-        <h3 id="high" class=""></h3>
-        <h3 id="low" class=""></h3>
-        <h3 id="windspeed" class=""></h3>
-        <h3 id="humidity" class=""></h3>
-      </div>
-    </div>
+    
+    
 
     <!-- activities cards -->
     <div class="container cardContainer">
