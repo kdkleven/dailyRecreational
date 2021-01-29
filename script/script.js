@@ -101,8 +101,11 @@ $.ajax ({
     // console.log(data);
     // console.log(data[randInt].text);
     // console.log(data[randInt].author);
+    var author = (data[randInt].author);
+    if (author = null,
+        author = "unknown");
     $("#quote").text(data[randInt].text + "  ");
-    $("#quote").append("~  " + (data[randInt].author) );
+    $("#quote").append("~  " + (author) );
 });
 
 }
