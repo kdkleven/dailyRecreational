@@ -87,23 +87,31 @@ function compareZip() {
         console.log(zipCodequeryURL);
     });
 }
+
+
+
+
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
 var randInt = Math.floor(Math.random() * 1683);
 console.log(randInt);
 
+
+//get quote wrapped in a function.  To be used with the onclick event
 function getQuote () {
 $.ajax ({
     url: queryURL,
     method: "GET"
 }).then(function(response){
     var data = JSON.parse(response);
-    // console.log(data);
-    // console.log(data[randInt].text);
-    // console.log(data[randInt].author);
     var author = (data[randInt].author);
-    if (author = null,
-        author = "unknown");
+    var author2 = "Unknown";
+    if (author !== null) {
+        author = author
+    } else {
+        author = author2
+    }
+
     $("#quote").text(data[randInt].text + "  ");
     $("#quote").append("~  " + (author) );
 });
