@@ -87,3 +87,34 @@ function compareZip() {
         console.log(zipCodequeryURL);
     });
 }
+//quote randomizer
+var queryURL = "https://type.fit/api/quotes";
+var randInt = Math.floor(Math.random() * 1683);
+console.log(randInt);
+
+$.ajax ({
+    url: queryURL,
+    method: "GET"
+}).then(function(response){
+    var data = JSON.parse(response);
+    console.log(data);
+    console.log(data[randInt].text);
+});
+
+//code to push to page needed
+
+//PLACES WITHIN A 500 MILE RADIUS
+var zipRadius = corsVar + "https://www.zipcodeapi.com/rest/FmZssgT290OJYfl04zz7w5aoLTZqmkEd3FQv6KGDnVDEIBPrC3EVsSVMAJZiYLwM/radius.json/" + zipcode + "/500/mile"
+
+
+// ZIP CODE TO STATE
+var statequeryURL = corsVar + "https://www.zipcodeapi.com/rest/FmZssgT290OJYfl04zz7w5aoLTZqmkEd3FQv6KGDnVDEIBPrC3EVsSVMAJZiYLwM/info.json/" + zipcode + "/degrees"
+
+$.ajax ({
+    url: statequeryURL,
+    method: "GET"
+}).then(function(response){
+    var data = JSON.parse(response);
+    console.log(data);
+    console.log(data.state);
+});
