@@ -15,30 +15,17 @@ body {
 }
 #quote{
     text-align: center;
-    /* color: white; */
     font-size: 25px;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black; */
+
 }
-/* .form-label{
-    color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-} */
+
 h1{
-    /* color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black; */
     text-align: center;
 }
 
 .jumbotron {
     padding-left: 25px;
-    /* color: white; */
     font-size: 50px;
-    /* -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-    box-shadow:  10px 5px 5px whitesmoke; */
 }
 
 .cardContainer {
