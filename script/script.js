@@ -52,37 +52,27 @@ function getParkInfo(stateInput, activityInput) {
         var result = response.data;
         console.log(result);
 
-        
-        
-        
-
         for (var a = 0; a < result.length; a++) {    
             var parkDiv = $('<div>').attr('class', 'card');
             var parkName = $('<h4>').attr('class', 'cardTitle');
-            var p = $('<p>');
-            var parkImg = $('<img>').attr('class', 'cardImg');
+            var parkImg = $('<p>').attr('class', 'cardImg');
+            var img = $('<img>');
             var parkDescription = $('<p>').attr('class', 'cardDescription');
             var parkURL = $('<a>').attr('href', result[a].url);
-            var linebreak = $('<br>');
-            // var parkLat;
-            // var parkLon;
-            // var parkOperatingHours;
+            var parkLat = $('<p>').attr('class', 'latitude');
+            var parkLon = $('<p>').attr('class', 'longitude');
 
             parkDiv.css({margin: '20px', width: "300px", display: "block"});
-            parkName = result[a].fullName;
-            parkImg.attr({src: result[a].images[0].url, width: "250px", height: "auto"});
-            parkDescription = result[a].description;
-            parkURL = result[a].url;
-            // var parkFullName = $('<h3>').attr('class', 'cardHeader');
-            // var parkImage = $('<img>').attr('class', 'cardHeader');
+            parkName.html(result[a].fullName);
+            img.attr({src: result[a].images[0].url, width: "250px", height: "auto"});
+            parkDescription.html(result[a].description); 
+            parkURL.html(result[a].url);
+            parkLat.html("Latitude: " + result[a].latitude);
+            parkLon.html("Longitude: " + result[a].longitude);
             
-            // parkFullName.html(result[a].fullName);
-            // parkImage.attr('src', result[a].images[0]);
-            
-            // cardDiv.append(parkFullName, parkImage);
-            p.append(parkImg);
-            parkDiv.append(parkName, linebreak, p, linebreak, parkDescription, linebreak, parkURL);
-            
+            parkImg.append(img);
+            parkDiv.append(parkName, img, parkDescription, parkURL, parkLat, parkLon);
+
             $('#activities').append(parkDiv);
             
 
