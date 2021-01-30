@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Daily Recreational</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </head>
 
@@ -26,10 +24,10 @@
       <!-- search form -->
       <div class="row">
         <div class="col-4">
-          <select class="form-select" aria-label="Default select example">  
-            <option id="selectedState" selected>State</option>
+          <select class="form-select" id="selectedState" aria-label="Default select example">
+            <option selected>State</option>
             <option value="AL">Alabama</option>
-	          <option value="AK">Alaska</option>
+            <option value="AK">Alaska</option>
             <option option value="AZ">Arizona</option>
             <option value="AR">Arkansas</option>
             <option value="CA">California</option>
@@ -79,18 +77,19 @@
             <option value="WV">West Virginia</option>
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
-          </select><div>
-          <div class="row">
-            <div class="col">
-           <!--Activity dropdown -->
-            <select class="form-select" aria-label="Default select example">  
-              <option id="selectedActivity" selected>Select Activity</option>
-              <option value="camping">Camping</option>
-              <option value="biking">Biking</option>
-              <option value="hiking">Hiking</option>
-            </select>
-          </div>
-          </div>
+          </select>
+          <div>
+            <div class="row">
+              <div class="col">
+                <!--Activity dropdown -->
+                <select class="form-select" id="selectedActivity" aria-label="Default select example">
+                  <option selected>Select Activity</option>
+                  <option value="camping">Camping</option>
+                  <option value="biking">Biking</option>
+                  <option value="hiking">Hiking</option>
+                </select>
+              </div>
+            </div>
             <div class="row">
               <div class="col-6">
                 <button id="submit" type="button" class="btn btn-success">Submit</button>
@@ -109,13 +108,13 @@
             <h3 id="windspeed" class=""></h3>
             <h3 id="humidity" class=""></h3>
           </div>
-        </div>   
-      </div> 
+        </div>
+      </div>
     </div>
     <br />
 
     <!-- Daily quote div-->
-    <div  class="container">
+    <div class="container">
       <div class="row">
         <div id="quote" class="col-sm"></div>
       </div>
@@ -123,55 +122,23 @@
     <!-- activities cards -->
     <div class="container cardContainer">
       <div class="row">
-        <div id="activities" class="col-sm">
+        <div id="activities" class="col-sm cards">
           <!-- <div class="card" style="width: 18rem">
-            <img
-              src=""
-              class="card-img-top"
-              alt="..."
-            /> -->
-            <div class="card-body">
-              <p id="actCategory" class="card-text"></p>
-              <p id="actTitle" class="card-text"></p>
+            <p id="actTitle" class="card-text"></p>
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
               <p id="actDescription" class="card-text"></p>
               <p id="actLocation" class="card-text"></p>
             </div>
-          </div>
-        </div>
-        <div id="activities" class="col-sm">
-          <!-- <div class="card" style="width: 18rem">
-            <img
-              src=""
-              class="card-img-top"
-              alt="..."
-            /> -->
-            <div class="card-body">
-              <p id="actCategory" class="card-text"></p>
-              <p id="actTitle" class="card-text"></p>
-              <p id="actDescription" class="card-text"></p>
-              <p id="actLocation" class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div id="activities" class="col-sm">
-          <!-- <div class="card" style="width: 18rem"> -->
-            <!-- <img
-              src=""
-              class="card-img-top"
-              alt="..."
-            /> -->
-            <div class="card-body">
-              <p id="actCategory" class="card-text"></p>
-              <p id="actTitle" class="card-text"></p>
-              <p id="actDescription" class="card-text"></p>
-              <p id="actLocation" class="card-text"></p>
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- <script src="script/script.js"></script> -->
     <script src="script/kyle.js"></script>
   </body>
+
 </html>
