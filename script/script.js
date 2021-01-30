@@ -34,13 +34,64 @@ $('#submit').on("click", function (e) {
     
     console.log("Zipcode input: " + stateInput);
     console.log("Activity input: " + activityInput);
-
-    getActivity(stateInput, activityInput);
-    getWeather(stateInput);
+    
+    getQuote();
+    getParkInfo(stateInput, activityInput);
 
 });
 
-function getWeather(stateInput) {
+function getParkInfo(stateInput, activityInput) {
+
+    npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode="+ stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
+    $.ajax({
+        url: npsQueryURL,
+        method: "GET",
+
+    }).then(function (response) {
+
+        var result = response.data;
+        console.log(result);
+
+        
+        
+        
+
+        for (var a = 0; a < result.length; a++) {    
+            var parkDiv = $('<div>').attr('class', 'card');
+            var parkName = $('<h4>').attr('class', 'cardTitle');
+            var p = $('<p>');
+            var parkImg = $('<img>').attr('class', 'cardImg');
+            var parkDescription = $('<p>').attr('class', 'cardDescription');
+            var parkURL = $('<a>').attr('href', result[a].url);
+            var linebreak = $('<br>');
+            // var parkLat;
+            // var parkLon;
+            // var parkOperatingHours;
+
+            parkDiv.css({margin: '20px', width: "300px", display: "block"});
+            parkName = result[a].fullName;
+            parkImg.attr({src: result[a].images[0].url, width: "250px", height: "auto"});
+            parkDescription = result[a].description;
+            parkURL = result[a].url;
+            // var parkFullName = $('<h3>').attr('class', 'cardHeader');
+            // var parkImage = $('<img>').attr('class', 'cardHeader');
+            
+            // parkFullName.html(result[a].fullName);
+            // parkImage.attr('src', result[a].images[0]);
+            
+            // cardDiv.append(parkFullName, parkImage);
+            p.append(parkImg);
+            parkDiv.append(parkName, linebreak, p, linebreak, parkDescription, linebreak, parkURL);
+            
+            $('#activities').append(parkDiv);
+            
+
+            
+        }     
+    });
+}
+
+function getWeather() {
     
     weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?state=" + stateInput + "&units=imperial&appid=" + weatherapiKey;
 
@@ -60,67 +111,6 @@ function getWeather(stateInput) {
 
     });
 }
-
-function getActivity(stateInput, activityInput) {
-
-    //npsQueryURL = "https://developer.nps.gov/api/v1/parks?q=" + activityInput + "&stateCode=" + stateInput + "&api_key=" + npsAPIkey;
-    npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode="+ stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
-    $.ajax({
-        url: npsQueryURL,
-        method: "GET",
-
-    }).then(function (response) {
-
-        var result = response.data;
-        console.log(result);
-
-        for (var a = 0; a < result.length; a++) {
-            if (activity == response.data[a].activities[0].name) {
-                console.log("Found activities: " + response.data[a].name);
-            }
-        }
-        // var foundActivities = response.data[1].activities;
-        // console.log(foundActivities);
-
-
-        // //console.log(foundActivities);
-        // var postalCodes = [];
-        // var pCode = "";
-
-
-        // // Need array of zip codes within radius of entered zip code
-        // // Then compare array of zip codes against zip codes pulled from the nps api
-        // console.log(result);
-
-        // for (var i = 0; i < result.length; i++) {
-        //     if (result[i].activities[0]){
-        //         // pCode = result[i].addresses[0].postalCode;
-        //         // postalCodes.push(pCode);
-        //         foundActivities = result[i].activities[0];
-
-        //     }
-        // }
-
-        // console.log(foundActivities);
-
-        // let unique = [...new Set(postalCodes)];
-        // console.log("Unique code list: " + unique);
-    });
-}
-
-
-// function compareZip() {
-
-//     $.ajax({
-//         url: zipCodequeryURL,
-//         method: "GET"
-//     }).then(function (zipCompare) {
-//         console.log(zipCodequeryURL);
-//     });
-// }
-
-
-
 
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
@@ -149,5 +139,5 @@ function getQuote() {
 
 }
 
-getQuote();
+
 
