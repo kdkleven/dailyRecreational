@@ -1,41 +1,41 @@
-.hero-image {
+/* .hero-image {
     background-image: url("https://www.outdoors.com/wp-content/uploads/2018/03/outdoors-bg-1.jpg"); 
     background-color: white; 
     height: 1000px; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover; 
-  }
+  } */
 body {
     font-family: 'Roboto', sans-serif;
     
 }
 #quote{
     text-align: center;
-    color: white;
+    /* color: white; */
     font-size: 25px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black; */
 }
 .form-label{
-    color: white;
+    /* color: white;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: black; */
 }
 h1{
-    color: white;
+    /* color: white;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: black; */
     text-align: center;
 }
 
 .jumbotron {
     padding-left: 25px;
-    color: white;
+    /* color: white; */
     font-size: 50px;
-    -webkit-text-stroke-width: 1px;
+    /* -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-    box-shadow:  10px 5px 5px whitesmoke;
+    box-shadow:  10px 5px 5px whitesmoke; */
 }
 
 .cardContainer {
