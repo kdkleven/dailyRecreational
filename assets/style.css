@@ -1,5 +1,8 @@
 .hero-image {
     background-image: url("./background.jpg"); 
+    /* background-image: url("./hiking.jpg");  */
+    /* background-image: url("./camping.jpg");  */
+    /* background-image: url("./biking.jpg");  */
     background-color: white; 
     height: 800px; 
     background-position: center; 
