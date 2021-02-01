@@ -34,18 +34,25 @@ body {
     position: relative;
 }
 
+#activities {
+    padding: 0px;
+    margin: 0px;
+}
 .cards {
     width: 100%;
     display: inline-block flex;
-    margin: 20px;
-    padding: 5px;
+    /* margin: 20px;
+    padding: 5px; */
 }
 
 .card {
     width: 400px;
-    align-content: center;
+    height: 810px;
+    /* align-content: center; */
     margin: 10px;
+    padding: 10px;
     display: inline-block;
+    text-align: center;
 }
 
 
@@ -69,10 +76,13 @@ h1{
 
 .cardContainer {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
 }
 
 .parkImg {
-    width: 400px;
+    width: 100%;
+    height: 300px;
+    padding:10px;
+    
 }

@@ -60,7 +60,10 @@ function getParkInfo(stateInput, activityInput) {
 
         var result = response.data;
         console.log(result);
-        
+
+        if (result.length === 0) {
+        $("#activities").append($("<h1> NO RESULTS FOUND</h1>"));
+      } else {
 
         for (var a = 0; a < result.length; a++) {
             var parkDiv = $('<div>').attr({class: 'card', id: 'card-'+a});
@@ -87,7 +90,8 @@ function getParkInfo(stateInput, activityInput) {
 
             $('#activities').append(parkDiv);
         }
-        }
+        };
+    }
     });
 }
 
