@@ -76,7 +76,7 @@ function getParkInfo(stateInput, activityInput) {
    
             //parkDiv.css({ });
             parkName.html(result[a].fullName);
-            img.attr({src: result[a].images[0].url, class: });
+            img.attr({src: result[a].images[0].url, class: 'parkImg'});
             parkDescription.html(result[a].description);
             parkURL.html(result[a].url);
             // parkLat.html("Latitude: " + result[a].latitude);
