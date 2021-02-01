@@ -28,13 +28,13 @@ var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?units=imp
 
 $('#submit').on("click", function (e) {
     e.preventDefault();
-    
+
     stateInput = $('#selectedState').val();
     activityInput = $('#selectedActivity').val();
-    
+
     console.log("Zipcode input: " + stateInput);
     console.log("Activity input: " + activityInput);
-    
+
     getQuote();
     getParkInfo(stateInput, activityInput);
 
@@ -42,71 +42,82 @@ $('#submit').on("click", function (e) {
 
 function getParkInfo(stateInput, activityInput) {
 
-    npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode="+ stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
+    npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
+
     $.ajax({
         url: npsQueryURL,
         method: "GET",
-
-    }).then(function (response) {
+        success:  function (response) {
 
         var result = response.data;
         console.log(result);
-
-        
-        
         
 
-        for (var a = 0; a < result.length; a++) {    
-            var parkDiv = $('<div>').attr('class', 'card');
+        for (var a = 0; a < result.length; a++) {
+            var parkDiv = $('<div>').attr({class: 'card', id: 'card-'+a});
             var parkName = $('<h4>').attr('class', 'cardTitle');
-            var parkImg = $('<img>').attr('class', 'cardImg');
+            var parkImg = $('<p>').attr('class', 'cardImg');
+            var img = $('<img>');
             var parkDescription = $('<p>').attr('class', 'cardDescription');
             var parkURL = $('<a>').attr('href', result[a].url);
-            // var parkLat;
-            // var parkLon;
-            // var parkOperatingHours;
+            var parkLat = result[a].latitude;
+            var parkLon = result[a].longitude;
 
-            parkDiv.css({margin: '20px', width: "300px", display: "block"});
-            parkName = result[a].fullName;
-            parkImg.attr({src: result[a].images[0].url, width: "250px", height: "auto"});
-            parkDescription = result[a].description;
-            parkURL = result[a].url;
-            // var parkFullName = $('<h3>').attr('class', 'cardHeader');
-            // var parkImage = $('<img>').attr('class', 'cardHeader');
-            
-            // parkFullName.html(result[a].fullName);
-            // parkImage.attr('src', result[a].images[0]);
-            
-            // cardDiv.append(parkFullName, parkImage);
-            parkDiv.append(parkName, parkImg, parkDescription, parkURL);
-            
+       getParkWeather(parkLat, parkLon);
+   
+            parkDiv.css({ margin: '20px', width: "300px", display: "block" });
+            parkName.html(result[a].fullName);
+            img.attr({ src: result[a].images[0].url, width: "250px", height: "auto" });
+            parkDescription.html(result[a].description);
+            parkURL.html(result[a].url);
+            // parkLat.html("Latitude: " + result[a].latitude);
+            // parkLon.html("Longitude: " + result[a].longitude);
+
+            parkImg.append(img);
+            parkDiv.append(parkName, img, parkDescription, parkURL);
+
             $('#activities').append(parkDiv);
-            
-
-            
-        }     
+        }
+        }
     });
 }
 
-function getWeather() {
-    
-    weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?state=" + stateInput + "&units=imperial&appid=" + weatherapiKey;
-
+function getParkWeather(parkLat, parkLon) {
+    var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + parkLat + "&lon=" + parkLon + "&units=imperial&appid=" + weatherapiKey;
     $.ajax({
         url: weatherqueryURL,
-        method: "GET"
-    }).then(function (weather) {
-        //console.log(weatherqueryURL);
-        console.log(weather.main.temp);
-        console.log(weather.main.temp_min);
-        console.log(weather.main.temp_max);
-        console.log(weather.main.humidity);
-        console.log(weather.name);
-        console.log(moment((weather.dt), "X").format("MM/DD/YY"));
-        compareZip();
+        method: "GET",
+        success: function (weather) {
 
+            console.log(weather);
+            console.log(weather.main.temp);
+            console.log(weather.main.humidity);
+            console.log(weather.wind.speed);
+            console.log(moment((weather.dt), "X").format("MM/DD/YY"));
+            console.log(weather.weather[0].main);
+            console.log(weather.weather[0].icon);
 
-    });
+            // for (var i = 0; i < weather.length; i++) { 
+
+            var weathDiv = $('<div>').attr('class', 'card');
+            var date = $('<p>').attr('class', 'date');
+            var descrip = $('<p>').attr('class', 'describe');
+            var temp = $('<p>').attr('class', 'temperature');
+            var humidity = $('<p>').attr('class', 'humidity');
+            var weathIcon = $('<img>').attr('class', 'icon');
+
+            weathDiv.css({ margin: '20px', width: "300px", display: "block" });
+            date.html(moment((weather.dt), "X").format("MM/DD/YY"));
+            descrip.html(weather.weather[0].main);
+            temp.html("Temperature: " + weather.main.temp + " &deg F");
+            humidity.html("Humidity: " + weather.main.humidity + "%");
+            weathIcon.attr('src', 'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png');
+
+            weathDiv.append(date, descrip, temp, humidity, weathIcon);
+
+            $('.card').append(weathDiv);
+        }
+    });    
 }
 
 //quote randomizer
