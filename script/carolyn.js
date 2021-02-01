@@ -34,75 +34,93 @@ $("#submit").on("click", function (e) {
 
   console.log("Zipcode input: " + stateInput);
   console.log("Activity input: " + activityInput);
-
+  $("#activities").empty();
   getQuote();
   getParkInfo(stateInput, activityInput);
+});
+
+$("#reset").on("click", function (e) {
+  $("#activities").empty();
+  $("#quote").empty();
+  $("#selectedState").empty();
+  $("#selectedActivity").empty();
 });
 
 function getParkInfo(stateInput, activityInput) {
   npsQueryURL =
     "https://developer.nps.gov/api/v1/parks?stateCode=" +
-    stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
+    stateInput +
+    "&q=" +
+    activityInput +
+    "&api_key=" +
+    npsAPIkey;
   $.ajax({
     url: npsQueryURL,
     method: "GET",
-    success : function (response) {
-    var result = response.data;
-    console.log(result);
+    success: function (response) {
+      var result = response.data;
+      console.log(result);
+      if (result.length === 0) {
+        $("#activities").append($("<h1> NO RESULTS FOUND</h1>"));
+      } else {
+        for (var a = 0; a < result.length; a++) {
+          let parkDiv = $("<div>").attr("class", "card");
+          var parkName = $("<h4>").attr("class", "cardTitle");
+          var parkImg = $("<p>").attr("class", "cardImg");
+          var img = $("<img>");
+          var parkDescription = $("<p>").attr("class", "cardDescription");
+          var parkURL = $("<a>").attr("href", result[a].url);
+          let parkTemp = $("<p>").attr("class", "temp");
+          let parkWeath = $("<p>").attr("class", "parkWeath");
+          let today = $("<p>").attr("class", "todayDate");
+          let humidity = $("<p>").attr("class", "humidity");
+          var parkLat = result[a].latitude;
+          var parkLon = result[a].longitude;
 
-    for (var a = 0; a < result.length; a++) {
-      var parkDiv = $("<div>").attr("class", "card");
-      var parkName = $("<h4>").attr("class", "cardTitle");
-      var parkImg = $("<p>").attr("class", "cardImg");
-      var img = $("<img>");
-      var parkDescription = $("<p>").attr("class", "cardDescription");
-      var parkURL = $("<a>").attr("href", result[a].url);
-      var parkTemp = $("<p>").attr("class", "temp");
-      var parkWeath = $("<p>").attr("class", "parkWeath");
-      var today = $("<p>").attr("class", "todayDate");
-      var humidity = $("<p>").attr("class", "humidity");
-      var parkLat = result[a].latitude;
-      var parkLon = result[a].longitude;
+          parkDiv.css({ margin: "20px", width: "300px", display: "block" });
+          parkName.html(result[a].fullName);
+          img.attr({
+            src: result[a].images[0].url,
+            width: "250px",
+            height: "auto",
+          });
+          parkDescription.html(result[a].description);
+          parkURL.html(result[a].url);
+          parkImg.append(img);
+          parkDiv.append(parkName, img, parkDescription, parkURL);
 
-      parkDiv.css({ margin: "20px", width: "300px", display: "block" });
-      parkName.html(result[a].fullName);
-      img.attr({
-        src: result[a].images[0].url,
-        width: "250px",
-        height: "auto",
-      });
-      parkDescription.html(result[a].description);
-      parkURL.html(result[a].url);
-      parkImg.append(img);
-      parkDiv.append(parkName, img, parkDescription, parkURL, );
+          $("#activities").append(parkDiv);
 
-      $("#activities").append(parkDiv);
+          var weatherqueryURL =
+            "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+            parkLat +
+            "&lon=" +
+            parkLon +
+            "&exclude=minutely,hourly&units=imperial&appid=" +
+            weatherapiKey;
+          $.ajax({
+            url: weatherqueryURL,
+            method: "GET",
+          }).then(function (weather) {
+            // for (var i = 0; i < results.length; i ++) {
+            //     var parkWeather = dailyForecast[i];
+            //     var $element = parkDiv.eq(i);
+            //     $element.find(".todayDate").text(parkWeather.date);
+            //     $element.find(".temp").text(parkWeather.temp);
+            //     $element.find(".humidity").text(parkWeather.humidity);
+            //     $element.find(".parkWeath").text(parkWeather.description);
+            //     $element.find(".icon").attr("src", parkWeather.icon);
 
-      var weatherqueryURL =
-        "https://api.openweathermap.org/data/2.5/onecall?lat=" + parkLat + "&lon=" + parkLon +"&exclude=minutely,hourly&units=imperial&appid=" + weatherapiKey;
-      $.ajax({
-        url: weatherqueryURL,
-        method: "GET",
-      }).then(function (weather) {
-        // for (var i = 0; i < results.length; i ++) {
-        //     var parkWeather = dailyForecast[i];
-        //     var $element = parkDiv.eq(i);
-        //     $element.find(".todayDate").text(parkWeather.date);
-        //     $element.find(".temp").text(parkWeather.temp);
-        //     $element.find(".humidity").text(parkWeather.humidity);
-        //     $element.find(".parkWeath").text(parkWeather.description);
-        //     $element.find(".icon").attr("src", parkWeather.icon);
+            parkTemp.html("Temperature: " + weather.current.temp + " &deg F");
+            parkWeath.html(
+              "Current Condition: " + weather.current.weather[0].main
+            );
+            humidity.html("Humidity: " + weather.current.humidity + "%");
+            today.html(moment(weather.current.dt, "X").format("MM/DD/YY"));
 
-        parkTemp.html("Temperature: " + weather.current.temp + " &deg F");
-        parkWeath.html("Current Condition " + weather.current.weather[0].main);
-        humidity.html("Humidity: " + weather.current.humidity + "%");
-        today.html(moment(weather.current.dt, "X").format("MM/DD/YY"));
-
-        parkDiv.append(today, parkTemp, parkWeath, humidity,)
-
-    })
-
-        
+            parkDiv.append(today, parkTemp, parkWeath, humidity);
+          });
+        }
 
         // var date = $("<p>").attr("class", "date");
         // var descrip = $("<p>").attr("class", "describe");
@@ -115,9 +133,9 @@ function getParkInfo(stateInput, activityInput) {
         // temp.html("Temperature: " + weather.current.temp + " &deg F");
         // humidity.html("Humidity: " + weather.current.humidity + "%");
         // weathIcon.html('<img src="https://openweathermap.org/img/wn/' + weather.current.weather[0].icon + '.png">');
-    }
-  }
-})
+      }
+    },
+  });
 }
 // function getWeather() {
 
