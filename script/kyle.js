@@ -35,10 +35,19 @@ $('#submit').on("click", function (e) {
     console.log("Zipcode input: " + stateInput);
     console.log("Activity input: " + activityInput);
 
+    $('#activities').empty();
+
     getQuote();
     getParkInfo(stateInput, activityInput);
 
 });
+
+$("#reset").on("click", function (e) {
+    $("#activities").empty();
+    $("#quote").empty();
+    $('#selectedState').val("State");
+    $('#selectedActivity').val("Select Activity")
+  });
 
 function getParkInfo(stateInput, activityInput) {
 
@@ -65,16 +74,16 @@ function getParkInfo(stateInput, activityInput) {
 
        getParkWeather(parkLat, parkLon, a);
    
-            parkDiv.css({ margin: '20px', width: "300px", display: "block" });
+            //parkDiv.css({ });
             parkName.html(result[a].fullName);
-            img.attr({ src: result[a].images[0].url, width: "250px", height: "auto" });
+            img.attr({src: result[a].images[0].url, class: 'card-image'});
             parkDescription.html(result[a].description);
             parkURL.html(result[a].url);
             // parkLat.html("Latitude: " + result[a].latitude);
             // parkLon.html("Longitude: " + result[a].longitude);
 
             parkImg.append(img);
-            parkDiv.append(parkName, img, parkDescription, parkURL);
+            parkDiv.append(img, parkName, parkDescription, parkURL);
 
             $('#activities').append(parkDiv);
         }

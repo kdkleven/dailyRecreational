@@ -7,13 +7,28 @@
     height: 800px; 
     background-position: center; 
     background-repeat: no-repeat; 
-    background-size: cover; 
+    background-size: cover;
+    background-attachment: fixed; 
   }
-body {
+
+  body {
     font-family: 'Heebo', sans-serif;
     
 }
 
+.cards {
+    width: 100%;
+    display: inline-block flex;
+    margin: 20px;
+    padding: 5px;
+}
+
+.card {
+    width: 400px;
+    align-content: center;
+    margin: 10px;
+    display: inline-block;
+}
 
 #quote{
     text-align: center;
@@ -35,4 +50,8 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card-image {
+    width: 400px;
 }
