@@ -110,9 +110,9 @@ function getParkInfo(stateInput, activityInput) {
                             humidity.html("Humidity: " + weather.current.humidity + "%");
                             weathIcon.html('<img src="https://openweathermap.org/img/wn/' + weather.current.weather[0].icon + '.png">');
                            
-                            tempDiv.append(currentDate, currentWeather, currentHumidity, weatherIcon);
+                            weathDiv.append(date, descrip, temp, humidity, weatherIcon);
                             console.log(tempDiv);
-                            $('#activities').append(tempDiv);
+                            $('#activities').append(weathDiv);
 
 
                         };
