@@ -94,7 +94,7 @@ function getParkInfo(stateInput, activityInput) {
                     console.log(weather.current.weather[0].icon);
                     // compareZip();
 
-                        for (var i = 0; i < weather.length; i++) { 
+                        // for (var i = 0; i < weather.length; i++) { 
                         
                             var weathDiv = $('<div>');//.attr('class', 'card');
                             var date = $('<p>').attr('class', 'date');
@@ -111,11 +111,11 @@ function getParkInfo(stateInput, activityInput) {
                             weathIcon.html('<img src="https://openweathermap.org/img/wn/' + weather.current.weather[0].icon + '.png">');
                            
                             weathDiv.append(date, descrip, temp, humidity, weathIcon);
-                            console.log(tempDiv);
-                            $('#activities').append(weathDiv);
+                            console.log(weathDiv);
+                            $('.cardDescription').append(weathDiv);
 
 
-                        };
+                        // };
 
                 });
             
