@@ -63,7 +63,7 @@ function getParkInfo(stateInput, activityInput) {
             var parkLat = result[a].latitude;
             var parkLon = result[a].longitude;
 
-       getParkWeather(parkLat, parkLon);
+       getParkWeather(parkLat, parkLon, a);
    
             parkDiv.css({ margin: '20px', width: "300px", display: "block" });
             parkName.html(result[a].fullName);
@@ -82,7 +82,7 @@ function getParkInfo(stateInput, activityInput) {
     });
 }
 
-function getParkWeather(parkLat, parkLon) {
+function getParkWeather(parkLat, parkLon, a) {
     var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + parkLat + "&lon=" + parkLon + "&units=imperial&appid=" + weatherapiKey;
     $.ajax({
         url: weatherqueryURL,
@@ -113,9 +113,9 @@ function getParkWeather(parkLat, parkLon) {
             humidity.html("Humidity: " + weather.main.humidity + "%");
             weathIcon.attr('src', 'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '.png');
 
-            weathDiv.append(date, descrip, temp, humidity, weathIcon);
+            //weathDiv.append(date, descrip, temp, humidity, weathIcon);
 
-            $('.card').append(weathDiv);
+            $('#card-'+a).append(date, descrip, temp, humidity, weathIcon);
         }
     });    
 }
