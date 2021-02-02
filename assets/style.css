@@ -55,7 +55,7 @@ body {
 
 .card {
     width: 400px;
-    height: auto;
+    height: 830px;
     color: #6c757d;
     /* align-content: center; */
     margin: 10px;
@@ -65,12 +65,12 @@ body {
     text-align: center;
 }
 
-.cardDescrition {
+/* .cardDescrition {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-}
+} */
 
 /* #quote{
     text-align: center;
@@ -95,15 +95,13 @@ body {
     font-size: 50px;
 }
 
-.cardContainer {
+/* .cardContainer {
     display: flex;
     /* align-items: center; */
-    justify-content: center;
-}
 
 .parkImg {
     width: 100%;
-    height: 300px;
+    height: 280px;
     padding:10px;
     
 }
