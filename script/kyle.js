@@ -28,16 +28,16 @@ var weatherqueryURL = "https://api.openweathermap.org/data/2.5/weather?units=imp
 
 $('#submit').on("click", function (e) {
     e.preventDefault();
-
+    
     stateInput = $('#selectedState').val();
     activityInput = $('#selectedActivity').val();
-
+    
     console.log("Zipcode input: " + stateInput);
     console.log("Activity input: " + activityInput);
 
     $('#activities').empty();
     $("#quote").empty();
-
+    
     getQuote();
     getParkInfo(stateInput, activityInput);
 
@@ -50,7 +50,7 @@ $("#reset").on("click", function (e) {
     $('#selectedActivity').val("Select Activity")
   });
 
-function getParkInfo(stateInput, activityInput) {
+  function getParkInfo(stateInput, activityInput) {
 
     npsQueryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" + stateInput + "&q=" + activityInput + "&api_key=" + npsAPIkey;
 
@@ -136,8 +136,8 @@ function getParkWeather(parkLat, parkLon, a) {
 
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
-var randInt = Math.floor(Math.random() * 1683);
-console.log(randInt);
+// var randInt = Math.floor(Math.random() * 1683);
+// console.log(randInt);
 
 
 //get quote wrapped in a function.  To be used with the onclick event
@@ -146,6 +146,8 @@ function getQuote() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        var randInt = Math.floor(Math.random() * 1683);
+console.log(randInt);
         var data = JSON.parse(response);
         var author = (data[randInt].author);
         var author2 = "Unknown";

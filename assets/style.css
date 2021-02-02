@@ -41,7 +41,7 @@ body {
 }
 
 .container{
-    top: 100px;
+    top: 125px;
     position: relative;
 }
 
@@ -49,6 +49,7 @@ body {
     padding: 0px;
     margin: 0px;
 }
+
 .cards {
     width: 100%;
     display: inline-block flex;
@@ -73,7 +74,7 @@ body {
 #quote{
     text-align: center;
     font-size: 25px;
-    margin: 35px;    
+    margin: 10px;    
     /* background-color: white; */
 
 }
