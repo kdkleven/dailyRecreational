@@ -22,13 +22,14 @@
     background-attachment: fixed; 
   }
 
-header {
-    padding: 20px;
+.header {
     position: fixed;
     top: 0; left: 0;
+    padding: 20px;
     width: 100%;
     background-color: #2c493f;
-    z-index: 999;
+    background-attachment: fixed;
+    z-index: 2;
 }
 
 .search-btn {
@@ -45,11 +46,6 @@ body {
     position: relative;
 }
 
-#activities {
-    padding: 0px;
-    margin: 0px;
-}
-
 .cards {
     width: 100%;
     display: inline-block flex;
@@ -59,7 +55,7 @@ body {
 
 .card {
     width: 400px;
-    height: 810px;
+    height: auto;
     color: #6c757d;
     /* align-content: center; */
     margin: 10px;
@@ -69,18 +65,29 @@ body {
     text-align: center;
 }
 
+.cardDescrition {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 
-
-#quote{
+/* #quote{
     text-align: center;
+    background-color: white;
+    color: #2c493f;
     font-size: 25px;
     margin: 10px;    
     /* background-color: white; */
 
-}
-
-h1{
+.quotes.h1 {
     text-align: center;
+    background-color: white;
+    color: #2c493f;  
+    /* background-color: white; */
+    margin: 15px;
+    position: relative;
+    z-index: 2;
 }
 
 .jumbotron {
