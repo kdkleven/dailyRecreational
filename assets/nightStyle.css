@@ -1,9 +1,7 @@
 .hero-image {
-    background-image: url("./background.jpg"); 
-    /* background-image: url("./hiking.jpg");  */
-    /* background-image: url("./camping.jpg");  */
-    /* background-image: url("./biking.jpg");  */
-    background-color: white; 
+    background-image: url("./night_camping.jpg"); 
+    background-color: gray; 
+    color:white;
     height: 800px; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -11,22 +9,26 @@
     background-attachment: fixed; 
   }
 
-  
-
 .header {
     position: fixed;
     top: 0; left: 0;
     padding: 20px;
     width: 100%;
-    background-color: #2c493f;
+    background-color: rgb(32, 31, 31);
     background-attachment: fixed;
     z-index: 2;
 }
 
 .search-btn {
     float: right;
-}
 
+}
+#submit {
+    background-color: rgb(45, 45, 170);
+}
+#reset {
+    background-color: rgb(37, 35, 35);
+}
 body {
     font-family: 'Heebo', sans-serif;
     color: white;
@@ -40,6 +42,8 @@ body {
 .cards {
     width: 100%;
     display: inline-block flex;
+    background-color: rgb(32, 31, 31);
+    color: white;
     /* margin: 20px;
     padding: 5px; */
 }
@@ -47,7 +51,8 @@ body {
 .card {
     width: 400px;
     height: 830px;
-    color: #6c757d;
+    background-color: rgb(32, 31, 31);
+    color: white;
     /* align-content: center; */
     margin: 10px;
     padding: 10px;
@@ -80,26 +85,19 @@ body {
     position: relative;
     z-index: 2;
 }
-
-
-#quote {
+/* #quote {
     
-  color: whitesmoke;
-  /* font: 900 35vmin/50vh cookie, cursive; */
-  text-align: center;
-  text-shadow:
-        0.05em 0 black,
-        0 0.05em black,
-        -0.05em 0 black,
-        0 -0.05em black,
-        -0.05em -0.05em black,
-        -0.05em 0.05em black,
-        0.05em -0.05em black,
-        0.05em 0.05em black;
-  
- 
-  
-}
+    text-shadow:
+        0.05em 0 blue,
+        0 0.05em blue,
+        -0.05em 0 blue,
+        0 -0.05em blue,
+        -0.05em -0.05em blue,
+        -0.05em 0.05em blue,
+        0.05em -0.05em blue,
+        0.05em 0.05em blue;
+
+} */
 
 .jumbotron {
     padding-left: 25px;
