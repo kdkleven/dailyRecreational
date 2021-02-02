@@ -36,6 +36,7 @@ $('#submit').on("click", function (e) {
     console.log("Activity input: " + activityInput);
 
     $('#activities').empty();
+    $("#quote").empty();
 
     getQuote();
     getParkInfo(stateInput, activityInput);
