@@ -136,8 +136,8 @@ function getParkWeather(parkLat, parkLon, a) {
 
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
-var randInt = Math.floor(Math.random() * 1683);
-console.log(randInt);
+// var randInt = Math.floor(Math.random() * 1683);
+// console.log(randInt);
 
 
 //get quote wrapped in a function.  To be used with the onclick event
@@ -146,6 +146,8 @@ function getQuote() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        var randInt = Math.floor(Math.random() * 1683);
+console.log(randInt);
         var data = JSON.parse(response);
         var author = (data[randInt].author);
         var author2 = "Unknown";
