@@ -13,12 +13,14 @@ var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
 
 var stateInput;
 var activityInput;
-var currentTime = new Date().getHours();
-if (7 <= currentTime && currentTime < 20) {
-document.body.className = "hero-image";
-} else {
-  document.body.className = "nightMode";
-}
+
+// var currentTime = new Date().getHours();
+// if (7 <= currentTime && currentTime < 20) {
+// document.body.className = "hero-image";
+// } else {
+//   document.body.className = "nightMode";
+// }
+
 var npsAPIkey = "3eMx7JuhaDduCgDGcbpUQDSwo9EBymREAUXmdQch";
 var npsQueryURL =
   "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
@@ -186,3 +188,11 @@ function getQuote() {
     $("#quote").append("~  " + author);
   });
 }
+$(".themeChange").on("click", function(){
+  if ($(this).hasClass("light")) {
+    $("#theme").attr("href", "assets/style.css")
+  }
+  else if ($(this).hasClass("dark")){
+    $("#theme").attr("href", "assets/nightStyle.css")
+  }
+});

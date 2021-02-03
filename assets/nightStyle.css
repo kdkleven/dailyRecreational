@@ -20,7 +20,7 @@
 }
 
 .search-btn {
-    float: right;
+    width: 100% !important;
 
 }
 #submit {
@@ -98,6 +98,9 @@ body {
         0.05em 0.05em blue;
 
 } */
+.input-group {
+    padding: 5px;
+}
 
 .jumbotron {
     padding-left: 25px;
