@@ -24,7 +24,7 @@
 }
 
 .search-btn {
-    float: right;
+    width: 100% !important;
 }
 
 body {
@@ -95,10 +95,11 @@ body {
         -0.05em -0.05em black,
         -0.05em 0.05em black,
         0.05em -0.05em black,
-        0.05em 0.05em black;
-  
- 
-  
+        0.05em 0.05em black; 
+}
+
+.input-group {
+    padding: 5px;
 }
 
 .jumbotron {
@@ -116,3 +117,5 @@ body {
     padding:10px;
     
 }
+
+/* @media (min-width: 768px) { ... } */

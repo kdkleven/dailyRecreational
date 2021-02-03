@@ -11,11 +11,11 @@
 var stateInput;
 var activityInput;
 var currentTime = new Date().getHours();
-if (7 <= currentTime && currentTime < 20) {
-    document.body.className = "hero-image";
-} else {
-    document.body.className = "nightMode";
-}
+// if (7 <= currentTime && currentTime < 20) {
+//     document.body.className = "hero-image";
+// } else {
+//     document.body.className = "nightMode";
+// }
 
 var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
 
