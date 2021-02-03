@@ -25,6 +25,7 @@
 
 .search-btn {
     width: 100% !important;
+
 }
 
 body {
@@ -55,7 +56,16 @@ body {
     vertical-align: top;
     text-align: center;
 }
+.w3-button {
+    width: 60px;
+    padding:2px;
+    margin: 3px;
+    text-align: center;
+}
 
+#darkbtn {
+    background-color: rgb(32, 31, 31);
+}
 /* .cardDescrition {
     overflow: hidden;
     display: -webkit-box;

@@ -61,6 +61,16 @@ body {
     text-align: center;
 }
 
+.w3-button {
+    width: 60px;
+    padding:2px;
+    margin: 3px;
+    text-align: center;
+}
+
+#lightbtn {
+    background-color: grey;
+}
 /* .cardDescrition {
     overflow: hidden;
     display: -webkit-box;
