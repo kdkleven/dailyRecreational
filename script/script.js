@@ -10,12 +10,12 @@
 // return list of activities with images, links, descriptions, etc.
 var stateInput;
 var activityInput;
-var currentTime = new Date().getHours();
-if (7 <= currentTime && currentTime < 20) {
-  document.body.className = "hero-image";
-} else {
-  document.body.className = "nightMode";
-}
+// var currentTime = new Date().getHours();
+// if (7 <= currentTime && currentTime < 20) {
+//   document.body.className = "hero-image";
+// } else {
+//   document.body.className = "nightMode";
+// }
 
 var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
 
@@ -178,3 +178,12 @@ function getQuote() {
     $("#quote").append("~  " + author);
   });
 }
+
+$(".themeChange").on("click", function(){
+  if ($(this).hasClass("light")) {
+    $("#theme").attr("href", "assets/style.css")
+  }
+  else if ($(this).hasClass("dark")){
+    $("#theme").attr("href", "assets/nightStyle.css")
+  }
+});
