@@ -5,19 +5,30 @@ Participants: Kyle Kleven, Carolyn Hilpisch, Chris Boisjoli, AsliFarah
 Requirements: 
 ![Project Requirements](assets/Required.png)
 
-We started the initial project by voting on an app to create, assigning a project manager, and dividing the tasks between the front end and back end.  
+We started the initial project by voting on an app to create, assigning a project manager (Kyle), and dividing the tasks between the front end(Chris and Asli) and the back end (Kyle and Carolyn).  
 We followed up with a Trello board.   Everyone had access to the board and could create, move, and modify the cards.
 ![Trello Board](assets/Trello.png)
-
+We used the board to create the beginning tasks necessary to start the project.  
 
 # Daily Recreational
-Choose a self-explaining name for your project.
+We chose the name of Daily Recreational for our project.   
 
 # Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Daily Recreational is here to inspire you to get out of the house and rekindle your love for outdoor activities. Daily Recreational provides you with an inspirational quote to brighten your day, paired with useful information on National Parks based on your desired state and activity. Whether you like birdwatching or mountain climbing, the Daily Recreational is your source for getting in a positively active mindset.
+
 
 # Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+One of the major requirements was a responsive site.   Below are different sized versions.
+<h5>Laptop:</h5>
+![Daily Recreational](assets/Laptop.png)
+
+<h5>iPad:</h5>
+![iPad photo](assets/Ipad.png)
+
+<h5>iPhone:</h5>
+![iPhone photo](assets/iPhone.png)
+
+
 
 # Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
