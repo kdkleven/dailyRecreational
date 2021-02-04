@@ -1,20 +1,8 @@
-// take in the user's zip code
-// take in an activity
-// validate form fields
-// if zip code is > 5 numbers, or typeof != number, return error/none
-// if activity field is "select activity" return error
-// on submit, call zip code radius api to identify all zip codes in a 100 radius
-// store zip codes and state codes in an array/object
-// parse stored zip codes and state codes into a unique list of state codes
-// call nps api using the unique state code list (state code) and provided activity (query)
-// return list of activities with images, links, descriptions, etc.
-
-
+// Global Variables
 var stateInput;
 var activityInput;
-
 var darkMode = false;
-
+//APIs, API keys,CORS proxy 
 var npsAPIkey = "3eMx7JuhaDduCgDGcbpUQDSwo9EBymREAUXmdQch";
 var npsQueryURL =
     "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
@@ -23,7 +11,7 @@ var weatherqueryURL =
     "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=" +
     weatherapiKey;
 var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
-
+//On click for the sumbit button
 $("#submit").on("click", function (e) {
     e.preventDefault();
 
@@ -39,7 +27,7 @@ $("#submit").on("click", function (e) {
     getQuote();
     getParkInfo(stateInput, activityInput);
 });
-
+//Reset button onclick function
 $("#reset").on("click", function (e) {
     e.preventDefault();
     $("#activities").empty();
@@ -47,7 +35,7 @@ $("#reset").on("click", function (e) {
     $("#selectedState").val("State");
     $("#selectedActivity").val("Select Activity");
 });
-
+//Dark and light mode event
 $('#modeSwitch').on('click', function () {
     if (darkMode === false) {
         $('#theme').attr('href', 'assets/nightStyle.css');
@@ -60,7 +48,7 @@ $('#modeSwitch').on('click', function () {
     darkMode = false;
     return;
 });
-
+//Function to get National Park information and push to the page
 function getParkInfo(stateInput, activityInput) {
     npsQueryURL =
         "https://developer.nps.gov/api/v1/parks?stateCode=" +
@@ -119,7 +107,7 @@ function getParkInfo(stateInput, activityInput) {
         },
     });
 }
-
+//Function to get park weather information and push to the page
 function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL) {
     var weatherqueryURL =
         "https://api.openweathermap.org/data/2.5/weather?lat=" +
@@ -168,7 +156,7 @@ function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkE
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
 
-//get quote wrapped in a function.  To be used with the onclick event
+//function to get the quote and push to the page
 function getQuote() {
     $.ajax({
         url: queryURL,
