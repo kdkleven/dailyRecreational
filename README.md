@@ -37,7 +37,8 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
 # Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+For the future, we had some other ideas to expand this app.  We would like to incorporate more local events, to include state and local parks.  Collapsable cards would be helpful to hold more information on the page.  Along with more activities we would like to use a zip code radius to show the closest activities and return them in ascending order of proximity.  In addition to more activities we would like to incorprate equipment rental and traveler tips that are specific to activities offered at each location.  Eventually we would like to expand to an international app and include more inspirational and entertaining quotes.
+
 
 # Authors and acknowledgment
 Show your appreciation to those who have contributed to the project.
