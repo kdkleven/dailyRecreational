@@ -19,13 +19,13 @@ Daily Recreational is here to inspire you to get out of the house and rekindle y
 
 # Visuals
 One of the major requirements was a responsive site.   Below are different sized versions.
-<h5>Laptop:</h5>
+Laptop:
 ![Daily Recreational](assets/Laptop.png)
 
-<h5>iPad:</h5>
+iPad:
 ![iPad photo](assets/Ipad.png)
 
-<h5>iPhone:</h5>
+iPhone:
 ![iPhone photo](assets/iPhone.png)
 
 
