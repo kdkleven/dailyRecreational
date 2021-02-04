@@ -37,11 +37,14 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
 # Roadmap
-For the future, we have ideas to expand this app.  We would like to incorporate more local events, to include but not be limited to, state and local parks.   Along with more places we would like to use a zip code radius to show the closest activities and return them in ascending order of proximity. With all of the additional information, collpsable cards would be beneficial to hold more on the page.  Moreover we would like to incorprate equipment rental and traveler tips that are specific to adventures offered at each location.  Eventually we would like to expand to an international app and include more inspirational and entertaining quotes.
+For the future, there are a few ideas for app expansion.  An incorporation of more local events to include -  but not be limited to - state and local parks.   Along with more places a zip code radius to show the closest activities and return them in ascending order of proximity. With all of the additional information, collpsable cards would be beneficial to hold more on the page.  An introduction of equipment rental and traveler tips that are specific to adventures offered at each location.  Eventually an expansion to an international app and an inclusion of more inspirational and entertaining quotes.
 
 
 # Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Kyle Kleven: https://github.com/kdkleven
+Carolyn Hilpisch: https://github.com/ckhilpisch
+Chris Boisjoli: 
+Asli Farah: 
 
 # License
 For open source projects, say how it is licensed.
