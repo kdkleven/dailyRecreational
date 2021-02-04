@@ -1,7 +1,13 @@
 # uofm-bootcamp-project1
 Project 1
 Participants: Kyle Kleven, Carolyn Hilpisch, Chris Boisjoli, AsliFarah
-Requirements: ![Project Requirements](assets/required.png)
+
+Requirements: 
+![Project Requirements](assets/Required.png)
+
+We started the initial project by voting on an app to create, assigning a project manager, and dividing the tasks between the front end and back end.  
+We followed up with a Trello board.   Everyone had access to the board and could create, move, and modify the cards.
+![Trello Board](assets/Trello.png)
 
 
 # Daily Recreational
