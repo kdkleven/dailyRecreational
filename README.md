@@ -41,9 +41,9 @@ For the future, there are a few ideas for app expansion.  An incorporation of mo
 
 
 # Authors and acknowledgment
-Kyle Kleven: https://github.com/kdkleven
-Carolyn Hilpisch: https://github.com/ckhilpisch
-Chris Boisjoli: 
+Kyle Kleven: https://github.com/kdkleven<br/>
+Carolyn Hilpisch: https://github.com/ckhilpisch<br/>
+Chris Boisjoli: https://github.com/ChrisBoisjoli<br/>
 Asli Farah: 
 
 # License
