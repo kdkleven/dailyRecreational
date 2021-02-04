@@ -1,59 +1,61 @@
-.hero-image {
+body {
     background-image: url("./night_camping.jpg"); 
-    background-color: gray; 
-    color:white;
-    height: 800px; 
+    background-color: grey; 
+    height: auto; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
     background-attachment: fixed; 
-  }
+    font-family: 'Heebo', sans-serif;
+    color: white;
+}
 
 .header {
-    position: fixed;
-    top: 0; left: 0;
     padding: 20px;
+    margin: auto;
     width: 100%;
     background-color: rgb(32, 31, 31);
     background-attachment: fixed;
     z-index: 2;
 }
 
+#title {
+    font-family: 'Caveat', cursive;
+    padding: 0px 10px 0px 0px;
+    text-align: center;
+}
+
+.quoteDiv {
+    margin: 10px;
+}
+
 .search-btn {
     width: 100% !important;
-
 }
+
+.btn-default {
+    width: 100% !important;
+}
+
 #submit {
     background-color: rgb(45, 45, 170);
-}
-#reset {
-    background-color: rgb(37, 35, 35);
-}
-body {
-    font-family: 'Heebo', sans-serif;
-    color: white;
+    border:  rgb(45, 45, 170);
 }
 
-.container{
-    top: 125px;
-    position: relative;
+#reset {
+    background-color: rgb(37, 35, 35);
 }
 
 .cards {
     width: 100%;
     display: inline-block flex;
-    background-color: rgb(32, 31, 31);
-    color: white;
-    /* margin: 20px;
-    padding: 5px; */
 }
 
 .card {
-    width: 400px;
-    height: 830px;
+    width: 500px;
+    height: auto;
     background-color: rgb(32, 31, 31);
     color: white;
-    /* align-content: center; */
     margin: 10px;
     padding: 10px;
     display: inline-block;
@@ -61,69 +63,33 @@ body {
     text-align: center;
 }
 
-.w3-button {
-    width: 60px;
-    padding:2px;
-    margin: 3px;
+#quote {
     text-align: center;
-}
-
-#lightbtn {
-    background-color: grey;
-}
-/* .cardDescrition {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-} */
-
-/* #quote{
-    text-align: center;
-    background-color: white;
-    color: #2c493f;
-    font-size: 25px;
-    margin: 10px;    
-    /* background-color: white; */
-
-.quotes.h1 {
-    text-align: center;
-    background-color: white;
-    color: #2c493f;  
-    /* background-color: white; */
+    color:white; 
     margin: 15px;
-    position: relative;
     z-index: 2;
 }
-/* #quote {
-    
-    text-shadow:
-        0.05em 0 blue,
-        0 0.05em blue,
-        -0.05em 0 blue,
-        0 -0.05em blue,
-        -0.05em -0.05em blue,
-        -0.05em 0.05em blue,
-        0.05em -0.05em blue,
-        0.05em 0.05em blue;
 
-} */
+#noResults {
+    text-shadow: 2px 2px 3px red;
+    color:white;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    margin: 50px;
+}
+
 .input-group {
+    margin: 10px;
+}
+
+#modeSwitch {
+    align-self: right;
     padding: 5px;
 }
 
-.jumbotron {
-    padding-left: 25px;
-    font-size: 50px;
-}
-
-/* .cardContainer {
-    display: flex;
-    /* align-items: center; */
-
 .parkImg {
     width: 100%;
-    height: 280px;
-    padding:10px;
-    
+    height: 280px;    
 }
+

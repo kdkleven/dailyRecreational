@@ -8,182 +8,184 @@
 // parse stored zip codes and state codes into a unique list of state codes
 // call nps api using the unique state code list (state code) and provided activity (query)
 // return list of activities with images, links, descriptions, etc.
-var stateInput;
-var activityInput;
-// var currentTime = new Date().getHours();
-// if (7 <= currentTime && currentTime < 20) {
-//   document.body.className = "hero-image";
-// } else {
-//   document.body.className = "nightMode";
-// }
 
-var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
 
 var stateInput;
 var activityInput;
+
+var darkMode = false;
 
 var npsAPIkey = "3eMx7JuhaDduCgDGcbpUQDSwo9EBymREAUXmdQch";
 var npsQueryURL =
-  "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
-
+    "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
 var weatherapiKey = "73d3cee72322c512646546f162d5afe5";
 var weatherqueryURL =
-  "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=" +
-  weatherapiKey;
-
-// var zipcodeAPIKey = "ZjHz81gGy2vO2MQx3iYvDmmBBljAfRQzjbTg85zxDDPqSDZGjFiygyYRPNenp2pR";
-// var zipCodequeryURL = corsVar + "https://www.zipcodeapi.com/rest/" + zipcodeAPIKey + "/distance.json/" + zipcode + "/" + desZipcode + "/mile";
+    "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=" +
+    weatherapiKey;
+var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
 
 $("#submit").on("click", function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  stateInput = $("#selectedState").val();
-  activityInput = $("#selectedActivity").val();
+    stateInput = $("#selectedState").val();
+    activityInput = $("#selectedActivity").val();
 
-  console.log("Zipcode input: " + stateInput);
-  console.log("Activity input: " + activityInput);
+    console.log("State input: " + stateInput);
+    console.log("Activity input: " + activityInput);
 
-  $("#activities").empty();
-  $("#quote").empty();
+    $("#activities").empty();
+    $("#quote").empty();
 
-  getQuote();
-  getParkInfo(stateInput, activityInput);
+    getQuote();
+    getParkInfo(stateInput, activityInput);
 });
 
 $("#reset").on("click", function (e) {
-  $("#activities").empty();
-  $("#quote").empty();
-  $("#selectedState").val("State");
-  $("#selectedActivity").val("Select Activity");
+    e.preventDefault();
+    $("#activities").empty();
+    $("#quote").empty();
+    $("#selectedState").val("State");
+    $("#selectedActivity").val("Select Activity");
+});
+
+$('#modeSwitch').on('click', function () {
+    if (darkMode === false) {
+        $('#theme').attr('href', 'assets/nightStyle.css');
+        $(this).attr({src: "./assets/baseline_lightbulb_white_18dp.png", alt: "light mode", value: "light"});
+        darkMode = true;
+        return;
+    }
+    $('#theme').attr('href', 'assets/style.css');
+    $(this).attr({src: "./assets/baseline_lightbulb_black_18dp.png", alt: "dark mode", value: "dark"});
+    darkMode = false;
+    return;
 });
 
 function getParkInfo(stateInput, activityInput) {
-  npsQueryURL =
-    "https://developer.nps.gov/api/v1/parks?stateCode=" +
-    stateInput +
-    "&q=" +
-    activityInput +
-    "&api_key=" +
-    npsAPIkey;
+    npsQueryURL =
+        "https://developer.nps.gov/api/v1/parks?stateCode=" +
+        stateInput +
+        "&q=" +
+        activityInput +
+        "&api_key=" +
+        npsAPIkey;
+    
+    $.ajax({
+        url: npsQueryURL,
+        method: "GET",
+        success: function (response) {
+            var result = response.data;
+            
+            console.log(result);
+            var noResults = $('<p>').attr('id','noResults');
+            noResults.html("RESULTS NOT FOUND");
+            if (result.length === 0) {
+                $("#activities").append(noResults);
+            } else {
+                for (var a = 0; a < result.length; a++) {
+                    var parkDiv = $("<div>").attr({ class: "card", id: "card-" + a });
+                    var parkName = $("<h4>").attr("class", "cardTitle");
+                    var parkImg = $("<p>").attr("class", "cardImg");
+                    var img = $("<img>");
+                    var parkDescription = $("<p>").attr("class", "cardDetails");
+                    var parkURL = $("<a>").attr("href", result[a].url);
+                    var parkLat = result[a].latitude;
+                    var parkLon = result[a].longitude;
+                    var parkDirections = $("<span>").attr("class", "cardDetails");
+                    var parkWeatherInfo = $("<span>").attr("class", "cardDetails");
+                    var parkContactHeader = $('<p>').attr('class', 'cardSectionHeader');
+                    var parkPhone = $('<span>').attr('class', 'cardDetails');
+                    var parkEmail = $('<span>').attr('class', 'cardDetails');
 
-  $.ajax({
-    url: npsQueryURL,
-    method: "GET",
-    success: function (response) {
-      var result = response.data;
-      console.log(result);
+                    parkName.html("<br>" + result[a].fullName);
+                    img.attr({ src: result[a].images[0].url, class: "parkImg" });
+                    parkDescription.html(result[a].description);
+                    parkURL.html(result[a].url);
+                    parkDirections.html(result[a].directionsInfo);
+                    parkWeatherInfo.html(result[a].weatherInfo);
+                    parkContactHeader.html("<br>" + "Contact Park");
+                    parkPhone.html("Phone: " + result[a].contacts.phoneNumbers[0].phoneNumber + "<br>");
+                    parkEmail.html("Email: " + result[a].contacts.emailAddresses[0].emailAddress + "<br>");
 
-      if (result.length === 0) {
-        $("#activities").append($("<h1> NO RESULTS FOUND</h1>"));
-      } else {
-        for (var a = 0; a < result.length; a++) {
-          var parkDiv = $("<div>").attr({ class: "card", id: "card-" + a });
-          var parkName = $("<h4>").attr("class", "cardTitle");
-          var parkImg = $("<p>").attr("class", "cardImg");
-          var img = $("<img>");
-          var parkDescription = $("<p>").attr("class", "cardDescription");
-          var parkURL = $("<a>").attr("href", result[a].url);
-          var parkLat = result[a].latitude;
-          var parkLon = result[a].longitude;
+                    parkImg.append(img);
+                    parkDiv.append(img, parkName, parkDescription);
 
-          getParkWeather(parkLat, parkLon, a);
+                    $("#activities").append(parkDiv);
 
-          //parkDiv.css({ });
-          parkName.html(result[a].fullName);
-          img.attr({ src: result[a].images[0].url, class: "parkImg" });
-          parkDescription.html(result[a].description);
-          parkURL.html(result[a].url);
-          // parkLat.html("Latitude: " + result[a].latitude);
-          // parkLon.html("Longitude: " + result[a].longitude);
+                    getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL);
 
-          parkImg.append(img);
-          parkDiv.append(img, parkName, parkDescription, parkURL);
-
-          $("#activities").append(parkDiv);
-        }
-      }
-    },
-  });
+                }
+            }
+        },
+    });
 }
 
-function getParkWeather(parkLat, parkLon, a) {
-  var weatherqueryURL =
-    "https://api.openweathermap.org/data/2.5/weather?lat=" +
-    parkLat +
-    "&lon=" +
-    parkLon +
-    "&units=imperial&appid=" +
-    weatherapiKey;
-  $.ajax({
-    url: weatherqueryURL,
-    method: "GET",
-    success: function (weather) {
-      console.log(weather);
-      console.log(weather.main.temp);
-      console.log(weather.main.humidity);
-      console.log(weather.wind.speed);
-      console.log(moment(weather.dt, "X").format("MM/DD/YY"));
-      console.log(weather.weather[0].main);
-      console.log(weather.weather[0].icon);
+function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL) {
+    var weatherqueryURL =
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        parkLat +
+        "&lon=" +
+        parkLon +
+        "&units=imperial&appid=" +
+        weatherapiKey;
+    $.ajax({
+        url: weatherqueryURL,
+        method: "GET",
+        success: function (weather) {
+            console.log(weather);
+            console.log(weather.main.temp);
+            console.log(weather.main.humidity);
+            console.log(weather.wind.speed);
+            console.log(moment(weather.dt, "X").format("MM/DD/YY"));
+            console.log(weather.weather[0].main);
+            console.log(weather.weather[0].icon);
 
-      // for (var i = 0; i < weather.length; i++) {
+            var weatherHeader = $("<p>").attr("class", "cardSectionHeader");
+            var weathDiv = $("<div>").attr("class", "card");
+            var date = $("<p>").attr("class", "weather");
+            var descrip = $("<span>").attr("class", "weather");
+            var temp = $("<span>").attr("class", "weather");
+            var humidity = $("<span>").attr("class", "weather");
+            var weathIcon = $("<img>").attr("class", "weather");
 
-      var weathDiv = $("<div>").attr("class", "card");
-      var date = $("<p>").attr("class", "date");
-      var descrip = $("<p>").attr("class", "describe");
-      var temp = $("<p>").attr("class", "temperature");
-      var humidity = $("<p>").attr("class", "humidity");
-      var weathIcon = $("<img>").attr("class", "icon");
+            weatherHeader.html("Park Weather");
+            weathDiv.css({ margin: "20px", width: "300px", display: "block" });
+            date.html(moment(weather.dt, "X").format("MM/DD/YY"));
+            descrip.html("Forecast: " + weather.weather[0].main);
+            temp.html("<br>" + "Temperature: " + weather.main.temp + " &deg F");
+            humidity.html("<br>" + "Humidity: " + weather.main.humidity + "%" + "<br>");
+            weathIcon.attr(
+                "src",
+                "https://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png"
+            );
 
-      weathDiv.css({ margin: "20px", width: "300px", display: "block" });
-      date.html(moment(weather.dt, "X").format("MM/DD/YY"));
-      descrip.html(weather.weather[0].main);
-      temp.html("Temperature: " + weather.main.temp + " &deg F");
-      humidity.html("Humidity: " + weather.main.humidity + "%");
-      weathIcon.attr(
-        "src",
-        "https://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png"
-      );
+            $("#card-" + a).append(weatherHeader, descrip, temp, humidity, parkContactHeader, parkPhone, parkEmail, parkURL);
 
-      //weathDiv.append(date, descrip, temp, humidity, weathIcon);
-
-      $("#card-" + a).append(date, descrip, temp, humidity, weathIcon);
-    },
-  });
+        },
+    });
 }
 
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
-// var randInt = Math.floor(Math.random() * 1683);
-// console.log(randInt);
 
 //get quote wrapped in a function.  To be used with the onclick event
 function getQuote() {
-  $.ajax({
-    url: queryURL,
-    method: "GET",
-  }).then(function (response) {
-    var randInt = Math.floor(Math.random() * 1683);
-    console.log(randInt);
-    var data = JSON.parse(response);
-    var author = data[randInt].author;
-    var author2 = "Unknown";
-    if (author !== null) {
-      author = author;
-    } else {
-      author = author2;
-    }
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        var randInt = Math.floor(Math.random() * 1683);
+        var data = JSON.parse(response);
+        var author = data[randInt].author;
+        var author2 = "Unknown";
+        if (author !== null) {
+            author = author;
+        } else {
+            author = author2;
+        }
 
-    $("#quote").text(data[randInt].text + "  ");
-    $("#quote").append("~  " + author);
-  });
+        $("#quote").text(data[randInt].text + "  ");
+        $("#quote").append("~  " + author);
+
+    });
 }
-
-$(".themeChange").on("click", function(){
-  if ($(this).hasClass("light")) {
-    $("#theme").attr("href", "assets/style.css")
-  }
-  else if ($(this).hasClass("dark")){
-    $("#theme").attr("href", "assets/nightStyle.css")
-  }
-});

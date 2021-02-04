@@ -1,131 +1,90 @@
-.hero-image {
+body {
     background-image: url("./background.jpg"); 
-    /* background-image: url("./hiking.jpg");  */
-    /* background-image: url("./camping.jpg");  */
-    /* background-image: url("./biking.jpg");  */
     background-color: white; 
-    height: 800px; 
+    height: auto; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-size: cover;
     background-attachment: fixed; 
+    font-family: 'Heebo', sans-serif;
+    color: white;
   }
 
-  
-
 .header {
-    position: fixed;
-    top: 0; left: 0;
     padding: 20px;
+    margin: auto;
     width: 100%;
     background-color: #2c493f;
     background-attachment: fixed;
     z-index: 2;
 }
 
+#title {
+    font-family: 'Caveat', cursive;
+    padding: 0px 10px 0px 0px;
+    text-align: center;
+}
+
+.quoteDiv {
+    margin: 10px;
+}
+
 .search-btn {
     width: 100% !important;
-
 }
 
-body {
-    font-family: 'Heebo', sans-serif;
-    color: white;
-}
-
-.container{
-    top: 125px;
-    position: relative;
+.btn-default {
+    width: 100% !important;
 }
 
 .cards {
     width: 100%;
     display: inline-block flex;
-    /* margin: 20px;
-    padding: 5px; */
 }
 
 .card {
     width: 400px;
-    height: 830px;
+    height: auto;
     color: #6c757d;
-    /* align-content: center; */
     margin: 10px;
     padding: 10px;
-    display: inline-block;
+    display: flex;
     vertical-align: top;
     text-align: center;
 }
-.w3-button {
-    width: 60px;
-    padding:2px;
-    margin: 3px;
-    text-align: center;
-}
-
-#darkbtn {
-    background-color: rgb(32, 31, 31);
-}
-/* .cardDescrition {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-} */
-
-/* #quote{
-    text-align: center;
-    background-color: white;
-    color: #2c493f;
-    font-size: 25px;
-    margin: 10px;    
-    /* background-color: white; */
-
-.quotes.h1 {
-    text-align: center;
-    background-color: white;
-    color: #2c493f;  
-    /* background-color: white; */
-    margin: 15px;
-    position: relative;
-    z-index: 2;
-}
-
 
 #quote {
-    
-  color: whitesmoke;
-  /* font: 900 35vmin/50vh cookie, cursive; */
-  text-align: center;
-  text-shadow:
-        0.05em 0 black,
-        0 0.05em black,
-        -0.05em 0 black,
-        0 -0.05em black,
-        -0.05em -0.05em black,
-        -0.05em 0.05em black,
-        0.05em -0.05em black,
-        0.05em 0.05em black; 
+    text-align: center;
+    color:white;
+    margin: 15px;
+    z-index: 2;
+    text-shadow: 2px 2px 5px black;
+}
+
+#noResults {
+    text-shadow: 2px 2px 3px red;
+    color:white;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    margin: 50px;
 }
 
 .input-group {
+    margin: 10px;
+}
+
+#modeSwitch {
+    align-self: center;
     padding: 5px;
 }
-
-.jumbotron {
-    padding-left: 25px;
-    font-size: 50px;
-}
-
-/* .cardContainer {
-    display: flex;
-    /* align-items: center; */
 
 .parkImg {
     width: 100%;
     height: 280px;
-    padding:10px;
-    
 }
 
-/* @media (min-width: 768px) { ... } */
+.cardSectionHeader {
+    font-size: 20px;
+    font-weight: bold;
+}
