@@ -1,7 +1,7 @@
 # uofm-bootcamp-project1
 Project 1
 Participants: Kyle Kleven, Carolyn Hilpisch, Chris Boisjoli, AsliFarah
-Requirements: ![Project Requirements](/assets/required.png)
+Requirements: ![Project Requirements](assets/required.png)
 
 
 # Daily Recreational
