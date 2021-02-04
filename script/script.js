@@ -63,8 +63,6 @@ function getParkInfo(stateInput, activityInput) {
         method: "GET",
         success: function (response) {
             var result = response.data;
-            
-            console.log(result);
             var noResults = $('<p>').attr('id','noResults');
             noResults.html("RESULTS NOT FOUND");
             if (result.length === 0) {
@@ -120,14 +118,6 @@ function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkE
         url: weatherqueryURL,
         method: "GET",
         success: function (weather) {
-            console.log(weather);
-            console.log(weather.main.temp);
-            console.log(weather.main.humidity);
-            console.log(weather.wind.speed);
-            console.log(moment(weather.dt, "X").format("MM/DD/YY"));
-            console.log(weather.weather[0].main);
-            console.log(weather.weather[0].icon);
-
             var weatherHeader = $("<p>").attr("class", "cardSectionHeader");
             var weathDiv = $("<div>").attr("class", "card");
             var date = $("<p>").attr("class", "weather");
@@ -156,7 +146,7 @@ function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkE
 //quote randomizer
 var queryURL = "https://type.fit/api/quotes";
 
-//function to get the quote and push to the page
+//Retrieve a quote and push to the page
 function getQuote() {
     $.ajax({
         url: queryURL,
