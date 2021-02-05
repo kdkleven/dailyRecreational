@@ -1,4 +1,4 @@
-// Global Variables
+// Declare global Variables
 var stateInput;
 var activityInput;
 var darkMode = false;
@@ -11,6 +11,7 @@ var weatherqueryURL =
     "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=" +
     weatherapiKey;
 var corsVar = "https://chriscastle.com/proxy/index.php?:proxy:";
+
 //On click for the sumbit button
 $("#submit").on("click", function (e) {
     e.preventDefault();
@@ -18,15 +19,13 @@ $("#submit").on("click", function (e) {
     stateInput = $("#selectedState").val();
     activityInput = $("#selectedActivity").val();
 
-    console.log("State input: " + stateInput);
-    console.log("Activity input: " + activityInput);
-
     $("#activities").empty();
     $("#quote").empty();
 
     getQuote();
     getParkInfo(stateInput, activityInput);
 });
+
 //Reset button onclick function
 $("#reset").on("click", function (e) {
     e.preventDefault();
@@ -35,19 +34,21 @@ $("#reset").on("click", function (e) {
     $("#selectedState").val("State");
     $("#selectedActivity").val("Select Activity");
 });
+
 //Dark and light mode event
 $('#modeSwitch').on('click', function () {
     if (darkMode === false) {
-        $('#theme').attr('href', 'assets/nightStyle.css');
-        $(this).attr({src: "./assets/baseline_lightbulb_white_18dp.png", alt: "light mode", value: "light"});
+        $('#theme').attr('href', 'assets/styles/nightStyle.css');
+        $(this).attr({src: "./assets/images/baseline_lightbulb_white_18dp.png", alt: "light mode", value: "light"});
         darkMode = true;
         return;
     }
-    $('#theme').attr('href', 'assets/style.css');
-    $(this).attr({src: "./assets/baseline_lightbulb_black_18dp.png", alt: "dark mode", value: "dark"});
+    $('#theme').attr('href', 'assets/styles/style.css');
+    $(this).attr({src: "./assets/images/baseline_lightbulb_black_18dp.png", alt: "dark mode", value: "dark"});
     darkMode = false;
     return;
 });
+
 //Function to get National Park information and push to the page
 function getParkInfo(stateInput, activityInput) {
     npsQueryURL =
@@ -97,7 +98,7 @@ function getParkInfo(stateInput, activityInput) {
                     parkDiv.append(img, parkName, parkDescription);
 
                     $("#activities").append(parkDiv);
-
+                    // call open weather api to get weather for the current park response
                     getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL);
 
                 }
@@ -105,6 +106,7 @@ function getParkInfo(stateInput, activityInput) {
         },
     });
 }
+
 //Function to get park weather information and push to the page
 function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL) {
     var weatherqueryURL =
