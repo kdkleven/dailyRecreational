@@ -13,7 +13,7 @@ body {
 .header {
     padding: 20px;
     margin: auto;
-    width: 100%;
+    /* width: 100%; */
     background-color: rgb(32, 31, 31);
     background-attachment: fixed;
     z-index: 2;
@@ -86,6 +86,7 @@ body {
 #modeSwitch {
     align-self: right;
     padding: 5px;
+    float: left;
 }
 
 .parkImg {
@@ -93,3 +94,7 @@ body {
     height: 280px;    
 }
 
+.cardSectionHeader {
+    font-size: 20px;
+    font-weight: bold;
+}

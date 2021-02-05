@@ -39,12 +39,12 @@ $("#reset").on("click", function (e) {
 $('#modeSwitch').on('click', function () {
     if (darkMode === false) {
         $('#theme').attr('href', 'assets/styles/nightStyle.css');
-        $(this).attr({src: "./assets/images/baseline_lightbulb_white_18dp.png", alt: "light mode", value: "light"});
+        $(this).attr({ src: "./assets/images/baseline_lightbulb_white_18dp.png", alt: "light mode", value: "light" });
         darkMode = true;
         return;
     }
     $('#theme').attr('href', 'assets/styles/style.css');
-    $(this).attr({src: "./assets/images/baseline_lightbulb_black_18dp.png", alt: "dark mode", value: "dark"});
+    $(this).attr({ src: "./assets/images/baseline_lightbulb_black_18dp.png", alt: "dark mode", value: "dark" });
     darkMode = false;
     return;
 });
@@ -58,13 +58,13 @@ function getParkInfo(stateInput, activityInput) {
         activityInput +
         "&api_key=" +
         npsAPIkey;
-    
+
     $.ajax({
         url: npsQueryURL,
         method: "GET",
         success: function (response) {
             var result = response.data;
-            var noResults = $('<p>').attr('id','noResults');
+            var noResults = $('<p>').attr('id', 'noResults');
             noResults.html("RESULTS NOT FOUND");
             if (result.length === 0) {
                 $("#activities").append(noResults);
@@ -75,7 +75,8 @@ function getParkInfo(stateInput, activityInput) {
                     var parkImg = $("<p>").attr("class", "cardImg");
                     var img = $("<img>");
                     var parkDescription = $("<p>").attr("class", "cardDetails");
-                    var parkURL = $("<a>").attr("href", result[a].url);
+                    var urlButton = $("<button>").attr({type: "button", class: "btn btn-info" });
+                    // var parkURL = $("<a>").attr("href", result[a].url);
                     var parkLat = result[a].latitude;
                     var parkLon = result[a].longitude;
                     var parkDirections = $("<span>").attr("class", "cardDetails");
@@ -87,7 +88,9 @@ function getParkInfo(stateInput, activityInput) {
                     parkName.html("<br>" + result[a].fullName);
                     img.attr({ src: result[a].images[0].url, class: "parkImg" });
                     parkDescription.html(result[a].description);
-                    parkURL.html(result[a].url);
+                    urlButton.html("Visit Website");
+                    urlButton.attr({onclick: 'location.href=' + "'" + result[a].url + "'"});
+                    // parkURL.html(result[a].url);
                     parkDirections.html(result[a].directionsInfo);
                     parkWeatherInfo.html(result[a].weatherInfo);
                     parkContactHeader.html("<br>" + "Contact Park");
@@ -99,7 +102,7 @@ function getParkInfo(stateInput, activityInput) {
 
                     $("#activities").append(parkDiv);
                     // call open weather api to get weather for the current park response
-                    getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL);
+                    getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, urlButton);
 
                 }
             }
@@ -108,7 +111,7 @@ function getParkInfo(stateInput, activityInput) {
 }
 
 //Function to get park weather information and push to the page
-function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, parkURL) {
+function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkEmail, urlButton) {
     var weatherqueryURL =
         "https://api.openweathermap.org/data/2.5/weather?lat=" +
         parkLat +
@@ -139,7 +142,7 @@ function getParkWeather(parkLat, parkLon, a, parkContactHeader, parkPhone, parkE
                 "https://openweathermap.org/img/wn/" + weather.weather[0].icon + ".png"
             );
 
-            $("#card-" + a).append(weatherHeader, descrip, temp, humidity, parkContactHeader, parkPhone, parkEmail, parkURL);
+            $("#card-" + a).append(weatherHeader, descrip, temp, humidity, parkContactHeader, parkPhone, parkEmail, urlButton);
 
         },
     });
