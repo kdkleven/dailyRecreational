@@ -3,11 +3,12 @@ Project 1
 Participants: Kyle Kleven, Carolyn Hilpisch, Chris Boisjoli, AsliFarah
 
 Requirements: 
-![Project Requirements](assets/Required.png)
+![Project Requirements](assets/Required.png=500x)
 
 We started the initial project by voting on an app to create, assigning a project manager (Kyle), and dividing the tasks between the front end(Chris and Asli) and the back end (Kyle and Carolyn).  
 We followed up with a Trello board.   Everyone had access to the board and could create, move, and modify the cards.
-![Trello Board](assets/Trello.png)
+![Trello Board](assets/Trello.png=500x)
+
 We used the board to create the beginning tasks necessary to start the project.  
 
 # Daily Recreational
