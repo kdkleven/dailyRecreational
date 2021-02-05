@@ -33,9 +33,13 @@ iPhone:
 # Usage
 We had several things populate to the cards dynamically. We had the park name, a park photo, the park description, a link to the park, the park weather (based on the latitude and longitude of the park), and the contact info for the park.
 ![card info](assets/Info.png)
-We also had to create a response for a search that created no results.
+
+
+**We also had to create a response for a search that created no results.**
 ![No Results photo](assets/No_results.png)
-We also made a toggle for light and dark by placing a button in the header.
+
+
+**We also made a toggle for light and dark by placing a button in the header.**
 ![Light photo](assets/Light.png)
 ![Dark photo](assets/Dark.png)
 
