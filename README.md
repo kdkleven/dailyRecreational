@@ -32,7 +32,17 @@ iPhone:
 
 
 # Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+We had several things populate to the cards dynamically. We had the park name, a park photo, the park description, a link to the park, the park weather (based on the latitude and longitude of the park), and the contact info for the park.
+![card info](assets/Info.png)
+
+
+We also had to create a response for a search that created no results.
+![No Results photo](assets/No_results.png)
+
+
+We also made a toggle for light and dark by placing a button in the header.
+![Light photo](assets/Light.png)
+![Dark photo](assets/Dark.png)
 
 # Support
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
