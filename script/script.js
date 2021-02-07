@@ -2,7 +2,7 @@
 var stateInput;
 var activityInput;
 var darkMode = false;
-//APIs, API keys,CORS proxy 
+//APIs, API keys,CORS proxy
 var npsAPIkey = config.NPS_API;
 var npsQueryURL =
     "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
