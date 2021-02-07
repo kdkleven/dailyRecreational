@@ -3,10 +3,10 @@ var stateInput;
 var activityInput;
 var darkMode = false;
 //APIs, API keys,CORS proxy
-var npsAPIkey = config.NPS_API;
+var npsAPIkey = '3eMx7JuhaDduCgDGcbpUQDSwo9EBymREAUXmdQch';
 var npsQueryURL =
     "https://developer.nps.gov/api/v1/parks?q=&api_key=" + npsAPIkey;
-var weatherapiKey = config.OWM_API;
+var weatherapiKey = '73d3cee72322c512646546f162d5afe5';
 var weatherqueryURL =
     "https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=" +
     weatherapiKey;
