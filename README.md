@@ -52,4 +52,6 @@ For the future, there are a few ideas for app expansion:
 Kyle Kleven: https://github.com/kdkleven<br/>
 Carolyn Hilpisch: https://github.com/ckhilpisch<br/>
 Chris Boisjoli: https://github.com/ChrisBoisjoli<br/>
-Asli Farah: 
+
+# Try it!
+https://kdkleven.github.io/dailyRecreational/
